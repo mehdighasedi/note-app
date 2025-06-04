@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles/styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="main_box">
+        <div class="box__header">
+          <div class="box__header-title">
+            <span>Note Application</span>
+          </div>
+        </div>
+        <div class="box__body">
+          <div class="box__body-left">
+            <div class="box__body-left-title">
+              <span>Add New List</span>
+            </div>
+            <div class="box__body-left-inputs">
+              <input type="text" name="listName" id="listName" placeholder="List Name" />
+              <input
+                type="text"
+                name="listDescription"
+                id="listDescription"
+                placeholder="List Description"
+              />
+              <button class="btnAddList">Add List</button>
+            </div>
+          </div>
+          <div class="box__body-right">
+            <div class="box__body-right-header">
+              <div class="box__body-right-title">Your Lists</div>
+              <div class="box__body-right-controls">
+                <div class="search-container">
+                  <input type="search" class="search-input" placeholder="Search lists..." />
+                </div>
+                <div class="select-container">
+                  <select class="filter-select">
+                    <option value="all">All Lists</option>
+                    <option value="completed">Completed</option>
+                  </select>
+                </div>
+                <div class="select-container">
+                  <select class="sort-select">
+                    <option value="newest">Newest First</option>
+                    <option value="oldest">Oldest First</option>
+                    <option value="az">A to Z</option>
+                    <option value="za">Z to A</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <ul class="list-items">
+              <!-- Empty state message -->
+              <li class="empty-list" style="display: none">No items in the list</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="/js/script.js"></script>
+  </body>
+</html>
