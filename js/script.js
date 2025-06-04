@@ -1,4 +1,3 @@
-// DOM Elements
 const listNameInput = document.getElementById("listName");
 const listDescriptionInput = document.getElementById("listDescription");
 const addListButton = document.querySelector(".btnAddList");
@@ -7,11 +6,9 @@ const searchInput = document.querySelector(".search-input");
 const filterSelect = document.querySelector(".filter-select");
 const sortSelect = document.querySelector(".sort-select");
 
-// Initialize notes array
 let notes = [];
 let filteredNotes = [];
 
-// Function to create a new note
 function createNote(title, description) {
   const note = {
     id: Date.now(),
@@ -24,9 +21,7 @@ function createNote(title, description) {
   applyFiltersAndDisplay();
 }
 
-// Function to filter and sort notes
 function applyFiltersAndDisplay() {
-  // First apply status filter
   const filterValue = filterSelect.value;
   filteredNotes = notes.filter((note) => {
     if (filterValue === "all") return true;
@@ -34,7 +29,6 @@ function applyFiltersAndDisplay() {
     return true;
   });
 
-  // Then apply search filter
   const searchTerm = searchInput.value.toLowerCase().trim();
   if (searchTerm) {
     filteredNotes = filteredNotes.filter(
@@ -44,7 +38,6 @@ function applyFiltersAndDisplay() {
     );
   }
 
-  // Finally apply sorting
   const sortValue = sortSelect.value;
   filteredNotes.sort((a, b) => {
     switch (sortValue) {
@@ -64,9 +57,7 @@ function applyFiltersAndDisplay() {
   displayNotes();
 }
 
-// Function to display notes in DOM
 function displayNotes() {
-  // Clear current list
   listItemsContainer.innerHTML = "";
 
   const notesToDisplay = filteredNotes.length > 0 ? filteredNotes : notes;
@@ -103,7 +94,6 @@ function displayNotes() {
   });
 }
 
-// Function to toggle note completion
 function toggleComplete(id) {
   const note = notes.find((note) => note.id === id);
   if (note) {
@@ -112,20 +102,18 @@ function toggleComplete(id) {
   }
 }
 
-// Function to delete note
 function deleteNote(id) {
   notes = notes.filter((note) => note.id !== id);
   applyFiltersAndDisplay();
 }
 
-// Event listeners
 addListButton.addEventListener("click", () => {
   const title = listNameInput.value.trim();
   const description = listDescriptionInput.value.trim();
 
   if (title && description) {
     createNote(title, description);
-    // Clear inputs
+
     listNameInput.value = "";
     listDescriptionInput.value = "";
   } else {
@@ -133,10 +121,8 @@ addListButton.addEventListener("click", () => {
   }
 });
 
-// Add event listeners for search and filters
 searchInput.addEventListener("input", applyFiltersAndDisplay);
 filterSelect.addEventListener("change", applyFiltersAndDisplay);
 sortSelect.addEventListener("change", applyFiltersAndDisplay);
 
-// Initial display
 applyFiltersAndDisplay();
